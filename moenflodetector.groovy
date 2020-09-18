@@ -112,9 +112,9 @@ def getDeviceInfo() {
         def uri = "https://api-gw.meetflo.com/api/v2/devices/${device_id}"
         def response = make_authenticated_get(uri, "Get Device")
         def data = response.data
-        sendEvent(name: "temperature", value: round(data?.telemetry?.current?.tempF), unit: "F")
-        sendEvent(name: "humidity", value: round(data?.telemetry?.current?.humidity), unit: "%")
-        sendEvent(name: "battery", value: round(data?.battery?.level), unit: "%")
+        sendEvent(name: "temperature", value: round(data?.telemetry?.current?.tempF, 0), unit: "F")
+        sendEvent(name: "humidity", value: round(data?.telemetry?.current?.humidity, 0), unit: "%")
+        sendEvent(name: "battery", value: round(data?.battery?.level, 0), unit: "%")
         def water_state = data?.fwProperties?.telemetry_water
         def WATER_STATES = [1: "wet", 2: "dry"]
         if (water_state) {
@@ -143,7 +143,7 @@ def getLastAlerts() {
 }
 
 def round(d, places = 2) {
-    try { return (d as double).round(2) }
+    try { return (d as double).round(places) }
     catch (Exception e) { return (null) }
 }
 
