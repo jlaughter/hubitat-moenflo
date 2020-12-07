@@ -1,4 +1,4 @@
-# Moen Flo (and Smart Water Detector) for Hubitat
+# Moen Flo Smart Water Detector for Hubitat
 
 ## License
 Moen Flo for Hubitat by David Manuel is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0). 
